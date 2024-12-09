@@ -1,27 +1,18 @@
-import javax.sound.sampled.Port;
 import java.util.Scanner;
 
-public class Startsida {
+public class Meny {
 
+    SidFactory factory = new SidFactory();
 
+    public Meny() {
 
-    public Startsida() {
-        visaMeny();
-        int input = läsAnvändarInput();
-        switch (input) {
-            case 1:
-                new Portfolio();
-                break;
-            case 2:
-                new Information();
-                break;
-            case 3:
-                new Recensioner();
-                break;
-            case 4:
-                new Bokningar();
-                break;
+        while (true) {
+            visaMeny();
+            int input = läsAnvändarInput();
+            Sida sida = factory.visaSida(input);
+            sida.gåTillMeny();
         }
+
     }
 
     private void visaMeny() {
@@ -31,7 +22,7 @@ public class Startsida {
         System.out.println("1. Portfolion\n" +
                 "2. Information\n" +
                 "3. Recensioner\n" +
-                "4. Boka/avboka tid");
+                "4. Boka/avboka tid\n");
     }
 
     private int läsAnvändarInput() {
@@ -50,5 +41,9 @@ public class Startsida {
             läsAnvändarInput();
         }
         return 0;
+    }
+
+    public static void main(String[] args) {
+        new Meny();
     }
 }
