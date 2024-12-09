@@ -6,7 +6,9 @@ public class Bokning {
     String namn;
     String mail;
 
-    public Bokning() {
-        System.out.println("Bokningar");
+    public Bokning(LocalDate datum, String namn, String mail) {
+        this.datum = datum;
+        this.namn = namn;
+        this.mail = mail;
     }
 }
