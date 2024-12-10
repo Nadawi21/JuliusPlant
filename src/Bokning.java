@@ -6,10 +6,12 @@ public class Bokning implements Serializable {
     private LocalDate datum;
     private String namn;
     private String mail;
-
+/*
     public Bokning(LocalDate datum) {
         this.datum = datum;
     }
+
+ */
 
     public Bokning(LocalDate datum, String namn, String mail) {
         this.datum = datum;
