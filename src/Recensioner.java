@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -59,5 +61,16 @@ public class Recensioner extends Sida {
         }
     }
 
-    public void läsRecension() {};
+    public void läsRecension() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("recension.txt"))) {
+            String rad;
+            System.out.println("Recensioner : \n");
+            while ((rad = reader.readLine()) != null){
+                System.out.println(rad);
+            }
+        } catch (IOException e) {
+            System.out.println("Kunde inte läsa fil");
+            e.printStackTrace();
+        }
+    };
 }
