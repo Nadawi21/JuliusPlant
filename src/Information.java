@@ -3,7 +3,7 @@ public class Information extends Sida {
 
     String reglerOchVillkor = "Regler och villkor: \n -Avbokning eller ändring av datum måste ske minst 14 dagar innan den bokade tiden." +
             "\n -Om du blir mer än 20 minuter sen debiteras du en extra kostnad. \n - Betalning sker endast via faktura.";
-    String prislista = "Priser: \n Bröllop 7000 kr \n - Dop: 5000 kr \n Familjefotografering: 2500 kr";
+    String prislista = "Priser: \n Bröllop 7000 kr \n - Dop: 5000 kr";
     String kontaktuppgifter = "Kontakt: \n Vid frågor och funderingar kontakta mig på 070088664 eller julius.plant@gmail.se";
 
 
