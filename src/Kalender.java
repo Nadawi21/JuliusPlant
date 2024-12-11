@@ -29,31 +29,6 @@ public class Kalender extends Sida {
 
     }
 
-    public void sparaBokningar(List<Bokning> bokningar) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filnamn))) {
-            for (Bokning bokning : bokningar) {
-                oos.writeObject(bokning);
-
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void läsInBokningar(String filnamn) {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filnamn))) {
-            Object obj;
-            while ((obj = ois.readObject()) != null) {
-                Bokning bokning = (Bokning) obj;
-                bokningar.add(bokning);
-            }
-        } catch (EOFException e) {
-            System.out.println("Bokningarna har lästs in");
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void boka() {
         List<LocalDate> ledigaTider = new ArrayList<>();
         for (int i = 0; i < 7; i++) {

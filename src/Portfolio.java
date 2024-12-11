@@ -7,7 +7,6 @@ public class Portfolio extends Sida {
 
 
     public Portfolio() {
-        System.out.println("Portfolio: " + juliusPlant );
-//        gåTillMeny();
+        System.out.println("Portfolio:\n" + juliusPlant );
     }
 }
