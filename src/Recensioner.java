@@ -16,14 +16,13 @@ public class Recensioner extends Sida {
 
         System.out.println("Recensioner");
         System.out.println("Vill du läsa (1) eller skriva (2) recension?");
-        int val = läsInput();
+        int val = Input.läsMenyVal(2);
         if (val == 1) {
             läsRecension();
         } else if (val == 2) {
             skrivRecension();
         } else {
-            System.out.println("Välj 1 eller 2");
-            val = läsInput();
+            System.out.println("Oväntat fel");
         }
     }
 
