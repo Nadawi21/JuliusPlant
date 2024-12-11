@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//Läsa och skriva recensioner
 public class Recensioner extends Sida {
 
     List<Object> recensioner;

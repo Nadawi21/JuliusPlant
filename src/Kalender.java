@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-//Boka, avboka och se lediga tider
 public class Kalender extends Sida {
 
     List<Object> bokningar;
@@ -115,5 +114,4 @@ public class Kalender extends Sida {
         }
         filhanterare.skrivTillFil(bokningar, filnamn);
     }
-
 }
