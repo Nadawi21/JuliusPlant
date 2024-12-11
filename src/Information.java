@@ -9,7 +9,6 @@ public class Information extends Sida {
 
     public Information() {
         System.out.println("Information \n"  + reglerOchVillkor + "\n" + prislista + "\n" + kontaktuppgifter);
-//        gåTillMeny();
     }
 
 }

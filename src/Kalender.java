@@ -1,4 +1,3 @@
-import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -8,12 +7,15 @@ import java.util.Scanner;
 //Boka, avboka och se lediga tider
 public class Kalender extends Sida {
 
-    List<Bokning> bokningar = new ArrayList<>();
+    List<Object> bokningar;
+    Filhanterare filhanterare;
     String filnamn = "bokningar.ser";
 
-    public Kalender() {
 
-        läsInBokningar(filnamn);
+    public Kalender() {
+        bokningar = new ArrayList<>();
+        filhanterare = new Filhanterare();
+        filhanterare.läsFrånFil(bokningar, filnamn);
 
         System.out.println("Vill du: \n1. Boka\n2. Avboka");
         int val = läsInput();
@@ -59,8 +61,9 @@ public class Kalender extends Sida {
 
             LocalDate datum = LocalDate.now().plusDays(i);
             boolean datumHittades = false;
-            for (Bokning bokning : bokningar) {
-                if (bokning.getDatum().equals(datum)) {
+            for (Object bokning : bokningar) {
+                Bokning b = (Bokning) bokning;
+                if (b.getDatum().equals(datum)) {
                     datumHittades = true;
                     break;
                 }
@@ -90,7 +93,7 @@ public class Kalender extends Sida {
         System.out.print("Ange din mailadress: ");
         String mail = scan.nextLine();
         bokningar.add(new Bokning(datum, namn, mail));
-        sparaBokningar(bokningar);
+        filhanterare.skrivTillFil(bokningar, filnamn);
         System.out.println("Bokning registrerad");
     }
 
@@ -100,8 +103,9 @@ public class Kalender extends Sida {
         String mail = scan.nextLine();
         boolean bokningHittades = false;
         for (int i = 0; i < bokningar.size(); i++) {
-            if (bokningar.get(i).getMail().equals(mail)) {
-                System.out.println("Din bokning " + bokningar.get(i).getDatum() + " är avbokad");
+            Bokning b = (Bokning) bokningar.get(i);
+            if (b.getMail().equals(mail)) {
+                System.out.println("Din bokning " + b.getDatum() + " är avbokad");
                 bokningar.remove(i);
                 bokningHittades = true;
             }
@@ -109,7 +113,7 @@ public class Kalender extends Sida {
         if (!bokningHittades) {
             System.out.println("Hittade ingen bokning med angiven mailadress");
         }
-        sparaBokningar(bokningar);
+        filhanterare.skrivTillFil(bokningar, filnamn);
     }
 
 }
