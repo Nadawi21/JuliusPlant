@@ -17,14 +17,13 @@ public class Kalender extends Sida {
         filhanterare.läsFrånFil(bokningar, filnamn);
 
         System.out.println("Vill du: \n1. Boka\n2. Avboka");
-        int val = läsInput();
+        int val = Input.läsMenyVal(2);
         if (val == 1) {
             boka();
         } else if (val == 2) {
             avboka();
         } else {
-            System.out.println("Välj 1 eller 2");
-            val = läsInput();
+            System.out.println("Oväntat fel");
         }
 
     }
