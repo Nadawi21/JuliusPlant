@@ -22,7 +22,7 @@ public class Recensioner extends Sida {
         } else if (val == 2) {
             skrivRecension();
         } else {
-            System.out.println("Oväntat fel");
+            throw new IllegalArgumentException();
         }
     }
 

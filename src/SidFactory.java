@@ -11,7 +11,7 @@ public class SidFactory {
             case 4:
                 return new Kalender();
             default:
-                return null;
+                throw new IllegalArgumentException();
         }
     }
 }

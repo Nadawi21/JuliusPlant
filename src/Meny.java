@@ -7,10 +7,13 @@ public class Meny {
         while (true) {
             visaMeny();
             int input = Input.läsMenyVal(4);
-            Sida sida = factory.visaSida(input);
-            sida.gåTillMeny();
+            try {
+                Sida sida = factory.visaSida(input);
+                sida.gåTillMeny();
+            } catch (IllegalArgumentException e) {
+                System.out.println("Felaktigt argument i Input.läsMenyVal()");
+            }
         }
-
     }
 
     private void visaMeny() {

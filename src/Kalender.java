@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,7 +22,7 @@ public class Kalender extends Sida {
         } else if (val == 2) {
             avboka();
         } else {
-            System.out.println("Oväntat fel");
+            throw new IllegalArgumentException();
         }
 
     }
@@ -41,33 +40,25 @@ public class Kalender extends Sida {
                     break;
                 }
             }
-
             if (!datumHittades) {
                 ledigaTider.add(datum);
             }
         }
         for (int i = 0; i < ledigaTider.size(); i++) {
-            System.out.println(i + ": "+ ledigaTider.get(i));
+            System.out.println((i + 1) + ": "+ ledigaTider.get(i));
         }
-
 
         System.out.println("Välj ett datum:");
         Scanner scan = new Scanner(System.in);
-        int val = -1;
-        try {
-            val = scan.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Välj en siffra mellan 1 - " + ledigaTider.size());
-        }
-        LocalDate datum = ledigaTider.get(val);
-        scan.nextLine();
+        int val = Input.läsMenyVal(ledigaTider.size() - 1);
+        LocalDate datum = ledigaTider.get(val - 1);
         System.out.print("Ange ditt namn: ");
         String namn = scan.nextLine();
         System.out.print("Ange din mailadress: ");
         String mail = scan.nextLine();
         bokningar.add(new Bokning(datum, namn, mail));
         filhanterare.skrivTillFil(bokningar, filnamn);
-        System.out.println("Bokning registrerad");
+        System.out.println("Följande bokning registrerades:\nDatum: " + datum + "\nNamn: " + namn + "\nMail: " + mail);
     }
 
     public void avboka() {
